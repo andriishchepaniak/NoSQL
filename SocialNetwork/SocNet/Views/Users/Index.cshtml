@@ -1,0 +1,51 @@
+﻿@using SocNet.Models
+@model List<UserViewModel>
+
+
+
+<div class="asd">
+    <div id="Users">
+        @foreach (var item in Model)
+        {
+            <div class="card mb-4">
+                <div class="card-header">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div class="d-flex justify-content-between align-items-center">
+
+                            <div class="ml-2">
+                                <div class="h5 m-0">
+                                    <a>
+                                        @item.UserName
+                                    </a>
+                                </div>
+
+                            </div>
+                        </div>
+
+
+
+                    </div>
+
+                </div>
+                <div class="card-body">
+
+                    <div class="form-row">
+
+                        <div class="col-xl-8 col-lg-8 col-md-8 col-sm-6">
+
+                            <h5 class="card-title">@item.FirstName</h5>
+                            <h5 class="card-title">@item.LastName</h5>
+                           
+                            <a asp-action="Follow" asp-controller="Users" asp-route-id="@item.Id" data-ajax="true" data-ajax-update="@("#PostsFooter" + item.Id)" class="card-link">
+
+                                <i class="fas fa-heart">Follow</i>
+
+                            </a>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>

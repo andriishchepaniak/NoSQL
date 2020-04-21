@@ -1,0 +1,84 @@
+﻿@using SocNet.Models
+@model IEnumerable<PostViewModel>
+@{
+    ViewData["Title"] = "String";
+}
+
+
+@*<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>SocNet</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/authorization.css" />
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+
+<body>
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+            <div class="container">
+                <a class="navbar-brand" asp-area="" asp-controller="Posts" asp-action="Index">SocNet</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
+                    <ul class="navbar-nav flex-grow-1">
+
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Users" asp-action="Index">People</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="Login">Login</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="Logout">Logout</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="Logout">@User.Identity.Name</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>*@
+    <div class="container" >
+
+        <div class="card mb-4">
+
+            <div class="card-header">
+                <div class="d-flex justify-content-between align-items-center">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div class="ml-2">
+                            <p>Make a publication</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body">
+                <form asp-action="AddPost" asp-controller="Posts" data-ajax="true" data-ajax-update="#Posts">
+                    <div class="form-group">
+                        <input class="form-control" name="title" placeholder="Title">
+                    </div>
+                    <div class="form-group">
+                        <textarea class="form-control" name="content"></textarea>
+                    </div>
+                    <input type="submit" class="btn btn-primary btn-sm btn-block" value="Publish" />
+                </form>
+            </div>
+        </div>
+
+        <div class="asd">
+            <div id="Posts">
+                @{ await Html.RenderPartialAsync("_Posts", Model); }
+            </div>
+        </div>
+
+    </div>
+@*</body>
+</html>*@

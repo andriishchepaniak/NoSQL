@@ -1,0 +1,17 @@
+﻿body {
+}
+
+.container{
+    width : 60%;
+    float : left
+}
+
+.leftsidebar {
+    width: 20%;
+    float: left
+}
+
+.rightsidebar {
+    width: 20%;
+    float: left
+}

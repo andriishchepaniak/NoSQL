@@ -1,0 +1,78 @@
+﻿@model SocNet.Models.RegisterViewModel
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Sign up</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/authorization.css" />
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xl-5 col-lg-6 col-md-8 col-sm-10 col-12 mx-auto text-center">
+                <h1 class="display-4 py-2 text-truncate">SocNet</h1>
+                <div class="px-2">
+                    <form asp-action="Register" asp-controller="Account" asp-anti-forgery="true" class="justify-content-center">
+                        <div class="validation" asp-validation-summary="ModelOnly" />
+
+                        <div class="form-group">
+                            <label asp-for="FirstName" class="sr-only">FirstName</label>
+                            <input asp-for="FirstName" type="text" class="form-control" placeholder="FirstName">
+                            <span asp-validation-for="FirstName" />
+                        </div>
+
+                        <div class="form-group">
+                            <label asp-for="LastName" class="sr-only">FirstName</label>
+                            <input asp-for="LastName" type="text" class="form-control" placeholder="LastName">
+                            <span asp-validation-for="LastName" />
+                        </div>
+
+                        <div class="form-group">
+                            <label asp-for="Email" class="sr-only">Email</label>
+                            <input asp-for="Email" type="text" class="form-control" placeholder="Email">
+                            <span asp-validation-for="Email" />
+                        </div>
+
+                        <div class="form-group">
+                            <label asp-for="Username" class="sr-only">User name</label>
+                            <input asp-for="Username" type="text" class="form-control" placeholder="User name">
+                            <span asp-validation-for="Username" />
+                        </div>
+
+                        <div class="form-group">
+                            <label asp-for="Password" class="sr-only">Password</label>
+                            <input asp-for="Password" type="password" class="form-control" placeholder="Password">
+                            <span asp-validation-for="Password" />
+                        </div>
+
+                        <div class="form-group">
+                            <label asp-for="PasswordConfirm" class="sr-only">Confirm password</label>
+                            <input asp-for="PasswordConfirm" type="password" class="form-control" placeholder="Confirm password" />
+                            <span asp-validation-for="PasswordConfirm" />
+                        </div>
+
+                        <div class="form-group">
+                            <input type="submit" class="btn btn-info btn-lg btn-block" value="Sign up" />
+                        </div>
+
+                        <span class="txt1">Have an account?</span>
+                        <a asp-action="Login" asp-controller="Account" class="txt2">Sign in</a>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
