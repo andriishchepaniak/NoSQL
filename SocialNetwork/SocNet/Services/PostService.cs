@@ -38,11 +38,17 @@ namespace SocNet.Services
             var result = mapper.Map<IEnumerable<PostViewModel>>(await postRepository.GetAll());
             return result;
         }
-        public async Task<IEnumerable<PostViewModel>> GetAllByProfileAsync(string userName)
+        public IEnumerable<PostViewModel> GetAllByProfile(UserViewModel user)
         {
-            var mapper = new MapperConfiguration(cfg => cfg.CreateMap<Post, PostViewModel>()).CreateMapper();
-            var result = mapper.Map<IEnumerable<PostViewModel>>(await postRepository.GetAllByProfileAsync(userName));
-            
+            var result = new List<PostViewModel>();
+            foreach (var post in GetAll().Result)
+            {
+                if ((user.Followers.Contains(post.Author)) || (user.UserName == post.Author))
+                {
+                    result.Add(post);
+                }
+
+            }
             return result;
         }
 

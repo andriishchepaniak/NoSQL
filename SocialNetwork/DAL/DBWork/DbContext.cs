@@ -16,8 +16,8 @@ namespace DAL.DBWork
         //private string collectionName;
         public DbContext(string collectionName)
         {
-            //this.collectionName = collectionName; 
-            string connectionString = "mongodb://localhost:27017/socNet";
+
+            string connectionString = "mongodb://localhost:27017/socNet"; //Configuration.GetConnectionString("DefaultConnection"); //ConfigurationManager.ConnectionStrings["SocNet"].ConnectionString;
             IMongoClient client = new MongoClient(connectionString);
             IMongoDatabase database = client.GetDatabase("socNet");
             Collection = database.GetCollection<T>(collectionName);

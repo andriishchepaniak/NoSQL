@@ -7,3 +7,4 @@ D:\Progi\C#\SocialNetwork\DAL\obj\Debug\netcoreapp2.1\DAL.csprojAssemblyReferenc
 D:\Progi\C#\SocialNetwork\DAL\bin\Debug\netcoreapp2.1\DAL.pdb
 D:\Progi\C#\SocialNetwork\DAL\obj\Debug\netcoreapp2.1\DAL.dll
 D:\Progi\C#\SocialNetwork\DAL\obj\Debug\netcoreapp2.1\DAL.pdb
+D:\Progi\C#\SocialNetwork\DAL\bin\Debug\netcoreapp2.1\DAL.dll.config

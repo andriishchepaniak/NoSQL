@@ -27,22 +27,17 @@ namespace SocNet.Controllers
         //}
         public IActionResult Index()
         {
-            var user = _userService.GetByEmail(User.Identity.Name);
-            var posts = new List<PostViewModel>();
-            foreach (var post in _postService.GetAll().Result)
-            {
-                if (user.Result.Followers.Contains(post.Author))
-                    posts.Add(post);
-            }
+            var user = _userService.GetByEmail(User.Identity.Name).Result;
+            var posts = _postService.GetAllByProfile(user).ToList();
             return View(posts);
         }
         [Authorize]
         [HttpGet]
         public async Task<IActionResult> Like(string id)
         {
-            var user = _userService.GetByEmail(User.Identity.Name);
-            _postService.Like(user.Result.UserName, id);
-            var posts = await _postService.GetAll();
+            var user = _userService.GetByEmail(User.Identity.Name).Result;
+            _postService.Like(user.UserName, id);
+            var posts = _postService.GetAllByProfile(user).ToList();
             return View("_Posts", posts);
             //return PartialView("_Posts", posts);
         }
@@ -51,9 +46,9 @@ namespace SocNet.Controllers
         [HttpPost]
         public async Task<IActionResult> AddComment(string id, string content)
         {
-            var user = _userService.GetByEmail(User.Identity.Name);
-            _postService.AddComment(id, content, user.Result.UserName);
-            var posts = await _postService.GetAll();
+            var user = _userService.GetByEmail(User.Identity.Name).Result;
+            _postService.AddComment(id, content, user.UserName);
+            var posts = _postService.GetAllByProfile(user).ToList();
             return View("_Posts", posts);
         }
 
@@ -61,8 +56,9 @@ namespace SocNet.Controllers
         [HttpPost]
         public async Task<IActionResult> AddPost(string title, string content)
         {
-            _postService.AddPost(content, title, User.Identity.Name);
-            var posts = await _postService.GetAllByProfileAsync(User.Identity.Name);
+            var user = _userService.GetByEmail(User.Identity.Name).Result;
+            _postService.AddPost(content, title, user.UserName);
+            var posts = _postService.GetAllByProfile(user).ToList();
             return View("_Posts", posts);
         }
     }
